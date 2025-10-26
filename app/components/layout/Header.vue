@@ -8,7 +8,11 @@
 
 <style scoped>
 .header {
-    transition: padding 0.3ms ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: padding 0.3s ease-out;
 }
 .header.top {
     padding: 10px;
