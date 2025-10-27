@@ -11,6 +11,11 @@ export default defineNuxtConfig({
     imports: {
         dirs: ['~/types/**'],
     },
+    runtimeConfig: {
+        public: {
+            apiKey: '',
+        },
+    },
     compatibilityDate: '2025-07-15',
     devtools: { enabled: false },
     css: ['~/assets/css/global.css'],

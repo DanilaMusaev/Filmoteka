@@ -1,39 +1,36 @@
 <script lang="ts" setup>
+const movieService = useMovieService();
 const sectionRef = ref<HTMLElement | null>(null);
 const titleRef = ref<HTMLTitleElement | null>(null);
+const searched = ref<boolean>(false);
+const loading = ref<boolean>(false);
+const movieData = ref<IMovieShort[] | undefined>();
 
-const onSearch = (searchedFilm: string) => {
+const onSearch = async (searchedFilm: string) => {
     if (sectionRef.value && titleRef.value) {
         sectionRef.value.classList.add('searched');
         titleRef.value.innerText = `Search results for: "${searchedFilm}"`;
+        try {
+            loading.value = true;
+            const response = await movieService.searchMoviesByQuery(
+                searchedFilm
+            );
+            movieData.value = response?.movies;
+        } catch (err) {
+            console.error('FETCH ERROR', err);
+        } finally {
+            loading.value = false;
+            searched.value = true;
+        }
     }
 };
-
-// Mock MovieData to check the markup
-const moviesArr: IMovie[] = [
-    {
-        img: '/images/batmanKnight.jpg',
-        title: 'Batman',
-        year: '2009',
-    },
-    {
-        img: '/images/Batman_v_Superman_Dawn_of_Justice.jpg',
-        title: 'Batman vs Superman',
-        year: '2016',
-    },
-    {
-        img: '/images/Batman_returns_ver3.jpg',
-        title: 'Batman Returns',
-        year: '1992',
-    },
-];
 </script>
 
 <template>
     <section ref="sectionRef" class="search-films">
         <h2 ref="titleRef" class="title-1">Find your film!</h2>
         <Search @search="onSearch" />
-        <MovieGrid :movies="moviesArr" />
+        <MovieGrid v-if="searched" :movies="movieData" />
     </section>
 </template>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+
 interface Props {
-    movie: IMovie;
+    movie: IMovieShort;
 }
 
 const props = defineProps<Props>();
