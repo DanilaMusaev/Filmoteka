@@ -106,13 +106,16 @@ body {
     --text-primary: #1b1f26;
     --text-white: #fff;
     --text-placeholder: #a0a1a0;
-    --text-secondary: #7b8890;
+    --text-secondary: #5F676C;
     --text-accent-primary: var(--accent-primary);
     --text-accent-secondary: var(--accent-secondary);
 
     /* Movie Card */
     --card-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    --card-shadow-hover: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    --card-shadow-hover: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
+
+    /* Single Movie */
+    --sg-movie-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Basic classes */

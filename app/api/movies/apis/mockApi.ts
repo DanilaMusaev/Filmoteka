@@ -11,7 +11,10 @@ import type {
 export class MockApiClient implements MovieApiClient {
     async searchMoviesByQuery(query: string): Promise<ResponseSearchMovies> {
         const res = await $fetch<OMDbMovieSearchResponse>(
-            '/mock/massSearch.json'
+            '/mock/massSearch.json',
+            {
+                baseURL: 'http://localhost:3000',
+            }
         );
 
         if (res.Response === 'False') {
@@ -33,7 +36,10 @@ export class MockApiClient implements MovieApiClient {
 
     async searchMovieById(id: string): Promise<ResponseSearchOneMovie> {
         const res = await $fetch<OMDbDetailedMovieResponse>(
-            '/mock/oneMovie.json'
+            '/mock/oneMovie.json',
+            {
+                baseURL: 'http://localhost:3000',
+            }
         );
 
         if (res.Response === 'False') {

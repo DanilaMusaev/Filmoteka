@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ROUTES } from '~/config/routes';
+
 
 interface Props {
     movie: IMovieShort;
@@ -8,7 +10,7 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-    <article class="movie__card">
+    <article @click="$router.push(ROUTES.moviesId(props.movie.id))" class="movie__card">
         <NuxtImg class="movie__card-img" :src="props.movie.img" />
         <div class="movie__card-desc">
             <p class="movie__card-title">{{ props.movie.title }}</p>
@@ -43,6 +45,7 @@ const props = defineProps<Props>();
 .movie__card-title {
     font-size: 18px;
     font-weight: 600;
+    word-wrap: break-word;
 
     transition: color 0.3s ease-out;
 }

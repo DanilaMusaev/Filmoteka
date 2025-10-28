@@ -2,7 +2,7 @@ export interface IMovieShort {
     title: string;
     img: string;
     year: string;
-    id: string
+    id: string;
 }
 
 export interface IMovie {
@@ -14,6 +14,6 @@ export interface IMovie {
     director: string;
     writer: string;
     actors: string;
-    duration: string
-    plot: string
+    duration: string;
+    plot: string;
 }

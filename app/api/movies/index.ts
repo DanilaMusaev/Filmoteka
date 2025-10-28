@@ -7,8 +7,13 @@ export class MovieService {
         this.apiService = apiService;
     }
 
-    async searchMoviesByQuery(query: string) {
+    async searchMoviesByQuery(query: string | string[] | undefined) {
         try {
+            if (typeof query !== 'string') {
+                throw new Error(
+                    'The "query" parameter is not string or undefined'
+                );
+            }
             const result = await this.apiService.searchMoviesByQuery(query);
 
             return result;
@@ -18,8 +23,13 @@ export class MovieService {
         }
     }
 
-    async searchMoviesById(id: string) {
+    async searchMoviesById(id: string | string[] | undefined) {
         try {
+            if (typeof id !== 'string') {
+                throw new Error(
+                    'The "id" parameter is not string or undefined'
+                );
+            }
             const result = await this.apiService.searchMovieById(id);
 
             return result;

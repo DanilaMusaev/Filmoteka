@@ -1,7 +1,12 @@
+<script setup lang="ts">
+import { ROUTES } from '~/config/routes';
+
+</script>
+
 <template>
     <header class="header">
         <div class="header__inner">
-            <NuxtLink to="/" class="logo"> Filmoteka </NuxtLink>
+            <NuxtLink :to="ROUTES.main" class="logo"> Filmoteka </NuxtLink>
         </div>
     </header>
 </template>
