@@ -110,12 +110,18 @@ body {
     --text-accent-primary: var(--accent-primary);
     --text-accent-secondary: var(--accent-secondary);
 
+    /* Scrollbar */
+    --scrollbar-slider: #d67878;
+    --scrollbar-slider-hover: #b16666;
+    --scrollbar-track: #ffffff23;
+
     /* Movie Card */
     --card-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     --card-shadow-hover: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
 
     /* Single Movie */
     --sg-movie-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+
 }
 
 /* Basic classes */

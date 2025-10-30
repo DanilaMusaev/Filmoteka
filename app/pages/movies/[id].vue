@@ -32,7 +32,7 @@ const similarMovies = computed(() => data.value?.similarMovies);
 <style scoped>
 .singleMovie__section {
     display: grid;
-    justify-content: center;
-    padding: 100px 50px 50px;
+    justify-items: center;
+    padding: 100px 20px 30px;
 }
 </style>

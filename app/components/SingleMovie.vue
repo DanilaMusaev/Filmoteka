@@ -38,7 +38,7 @@
     max-width: 1000px;
 
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     column-gap: 30px;
 }
 
