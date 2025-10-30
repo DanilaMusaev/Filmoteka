@@ -7,12 +7,22 @@ const emit = defineEmits<Emits>();
 
 const search = ref<string>('');
 
+const emitSearchAndCleanValue = () => {
+    emit('search', search.value);
+    search.value = '';
+}
+
 const onClick = () => {
     if (search.value.trim()) {
-        console.log(search.value);
-        emit('search', search.value);
+        emitSearchAndCleanValue();
     }
 };
+
+const onKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' && search.value.trim()) {
+            emitSearchAndCleanValue();
+    }
+}
 </script>
 
 <template>
@@ -22,6 +32,7 @@ const onClick = () => {
             custom-class="search-input__input"
             type="text"
             placeholder="Write here film name..."
+            @keydown="onKeydown"
         />
         <button @click="onClick" class="search__button">Find</button>
     </div>
