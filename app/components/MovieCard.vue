@@ -48,6 +48,17 @@ const props = defineProps<Props>();
     word-wrap: break-word;
 
     transition: color 0.3s ease-out;
+
+    /* Ограничение текста до 2 строк */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    line-height: 1.4;
+    max-height: 2.8em; /* 2 строки * line-height */
+    word-break: break-word;
 }
 
 .movie__card-year {

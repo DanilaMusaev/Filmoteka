@@ -36,8 +36,6 @@
 <style scoped>
 .singleMovie {
     max-width: 1000px;
-    padding: 0 20px;
-    margin: 0 auto;
 
     display: flex;
     justify-content: center;
