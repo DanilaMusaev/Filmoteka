@@ -7,14 +7,26 @@ export class MovieService {
         this.apiService = apiService;
     }
 
-    async searchMoviesByQuery(query: string | string[] | undefined) {
+    async searchMoviesByQuery(options: {
+        title?: string | string[] | undefined;
+        genre?: string;
+        year?: string;
+    }) {
         try {
-            if (typeof query !== 'string') {
+            if (
+                options.title === undefined &&
+                options.genre === undefined &&
+                options.year === undefined
+            ) {
                 throw new Error(
-                    'The "query" parameter is not string or undefined'
+                    'No one option is define, please specify one of the options when requesting'
                 );
             }
-            const result = await this.apiService.searchMoviesByQuery(query);
+            const result = await this.apiService.searchMoviesByQuery({
+                title: options?.title,
+                genre: options?.genre,
+                year: options?.year,
+            });
 
             return result;
         } catch (err) {

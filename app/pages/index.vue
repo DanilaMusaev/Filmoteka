@@ -14,7 +14,9 @@ const { data: movieData, pending: loading } = useAsyncData(
     'search-movies',
     async () => {
         if (!searchQuery.value) return null;
-        return await movieService.searchMoviesByQuery(searchQuery.value);
+        return await movieService.searchMoviesByQuery({
+            title: searchQuery.value,
+        });
     },
     {
         watch: [searchQuery],

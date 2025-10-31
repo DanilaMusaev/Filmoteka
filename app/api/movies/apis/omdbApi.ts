@@ -9,8 +9,9 @@ import type {
     OMDbDetailedMovieResponse,
     OMDbMovieSearchResponse,
 } from '../types';
+import { buildSearchParams, omdbTransformer } from '../utils/queryBuilder';
 
-export class MockApiClient implements MovieApiClient {
+export class OMDBApiClient implements MovieApiClient {
     private apiConfig: ApiConfig;
 
     constructor(config: ApiConfig) {
@@ -20,10 +21,11 @@ export class MockApiClient implements MovieApiClient {
     async searchMoviesByQuery(
         query: ApiClientQuery
     ): Promise<ResponseSearchMovies> {
+        const params = buildSearchParams(omdbTransformer, query);
         const res = await $fetch<OMDbMovieSearchResponse>(
-            '/mock/massSearch.json',
+            `/?${params.toString()}&apikey=${this.apiConfig.apiKey}`,
             {
-                baseURL: 'http://localhost:3000',
+                baseURL: 'https://www.omdbapi.com',
             }
         );
 
@@ -46,9 +48,9 @@ export class MockApiClient implements MovieApiClient {
 
     async searchMovieById(id: string): Promise<ResponseSearchOneMovie> {
         const res = await $fetch<OMDbDetailedMovieResponse>(
-            '/mock/oneMovie.json',
+            `/?i=${id}&plot=full&apikey=${this.apiConfig.apiKey}`,
             {
-                baseURL: 'http://localhost:3000',
+                baseURL: 'https://www.omdbapi.com',
             }
         );
 

@@ -1,21 +1,35 @@
 <script setup lang="ts">
 const route = useRoute();
-const movieId = route.params.id;
 const movieService = useMovieService();
 
-const { data, pending, error } = useAsyncData('movie', async () => {
-    const movie = await movieService.searchMoviesById(movieId);
-
-    let similarMovies = null;
-    if (movie?.movie) {
-        similarMovies = await movieService.searchMoviesByQuery('sss');
-    }
-
-    return {
-        movie,
-        similarMovies,
-    };
+// Чтобы TS не ругался на undefined делаем movieId computed
+const movieId = computed(() => {
+  const id = route.params.id;
+  return Array.isArray(id) ? id[0] : id;
 });
+
+// Чтобы была перезагрузка при изменении id к пути делается динамический ключ для useAsyncData
+const { data, pending, error, refresh } = useAsyncData(
+    `movie-${route.params.id}`,
+    async () => {
+        const movie = await movieService.searchMoviesById(movieId.value);
+
+        let similarMovies = null;
+        if (movie?.movie.genre) {
+            similarMovies = await movieService.searchMoviesByQuery({
+                genre: movie.movie.genre.split(',').shift(),
+            });
+        }
+
+        return {
+            movie,
+            similarMovies,
+        };
+    },
+    {
+        watch: [movieId]
+    }
+);
 
 const movieData = computed(() => data.value?.movie);
 const similarMovies = computed(() => data.value?.similarMovies);
