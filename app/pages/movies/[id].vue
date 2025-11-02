@@ -4,8 +4,8 @@ const movieService = useMovieService();
 
 // Чтобы TS не ругался на undefined делаем movieId computed
 const movieId = computed(() => {
-  const id = route.params.id;
-  return Array.isArray(id) ? id[0] : id;
+    const id = route.params.id;
+    return Array.isArray(id) ? id[0] : id;
 });
 
 // Чтобы была перезагрузка при изменении id к пути делается динамический ключ для useAsyncData
@@ -27,7 +27,7 @@ const { data, pending, error, refresh } = useAsyncData(
         };
     },
     {
-        watch: [movieId]
+        watch: [movieId],
     }
 );
 
@@ -37,9 +37,9 @@ const similarMovies = computed(() => data.value?.similarMovies);
 
 <template>
     <section class="singleMovie__section">
-        <div v-if="pending">Loading...</div>
+        <UiMovieLoader v-if="pending" />
         <SingleMovie v-else :movie="movieData?.movie" />
-        <SimilarMoviesGrid :similar-movies="similarMovies?.movies" />
+        <SimilarMoviesGrid v-else :similar-movies="similarMovies?.movies" />
     </section>
 </template>
 

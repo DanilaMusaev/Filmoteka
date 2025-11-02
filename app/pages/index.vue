@@ -57,6 +57,7 @@ const pageTitle = computed(() =>
     >
         <h2 class="title-1">{{ pageTitle }}</h2>
         <Search @search="onSearch" />
+        <UiMovieLoader v-if="loading" />
         <MovieGrid v-if="hasSearched" :movies="movieData?.movies" />
     </section>
 </template>

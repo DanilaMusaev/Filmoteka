@@ -8,7 +8,7 @@ const props = defineProps<Props>();
 
 <template>
     <div class="movie">
-        <div v-if="movies === undefined" class="">
+        <div v-if="movies === undefined || movies.length === 0" class="">
             Nothing was found based on the results of the query.
         </div>
         <div v-else class="movie-grid">
