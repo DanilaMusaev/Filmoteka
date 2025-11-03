@@ -57,7 +57,9 @@ const pageTitle = computed(() =>
     >
         <h2 class="title-1">{{ pageTitle }}</h2>
         <Search @search="onSearch" />
-        <UiMovieLoader v-if="loading" />
+        <div v-if="loading" class="movie-loading">
+            <UiMovieLoader />
+        </div>
         <MovieGrid v-if="hasSearched" :movies="movieData?.movies" />
     </section>
 </template>
@@ -78,5 +80,14 @@ const pageTitle = computed(() =>
     padding: 100px 80px 50px;
     justify-content: start;
     align-items: start;
+}
+
+.movie-loading {
+    padding-top: 80px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

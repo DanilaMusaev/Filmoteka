@@ -37,9 +37,13 @@ const similarMovies = computed(() => data.value?.similarMovies);
 
 <template>
     <section class="singleMovie__section">
-        <UiMovieLoader v-if="pending" />
-        <SingleMovie v-else :movie="movieData?.movie" />
-        <SimilarMoviesGrid v-else :similar-movies="similarMovies?.movies" />
+        <div v-if="pending" class="singleMovie-loader">
+            <UiMovieLoader />
+        </div>
+        <div v-else>
+            <SingleMovie :movie="movieData?.movie" />
+            <SimilarMoviesGrid :similar-movies="similarMovies?.movies" />
+        </div>
     </section>
 </template>
 
@@ -48,5 +52,9 @@ const similarMovies = computed(() => data.value?.similarMovies);
     display: grid;
     justify-items: center;
     padding: 100px 20px 30px;
+}
+
+.singleMovie-loader {
+    margin-top: 300px;
 }
 </style>

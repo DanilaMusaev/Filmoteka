@@ -17,10 +17,10 @@
 }
 
 .movie-strip {
-    width: 100px;
-    height: 70px;
+    width: 104px;
+    height: 120px;
     background-image: url('/images/film-strip-loader.png');
-    background-size: 600px 70px;
+    background-size: 624px 120px;
     border-radius: 5px;
     position: relative;
     animation: frameChange 7.2s infinite;
@@ -35,38 +35,38 @@
     }
 
     16.67% {
-        background-position: -100px 0;
+        background-position: -104px 0;
     }
     30.56% {
-        background-position: -100px 0;
+        background-position: -104px 0;
     }
 
     33.34% {
-        background-position: -200px 0;
+        background-position: -208px 0;
     }
     47.23% {
-        background-position: -200px 0;
+        background-position: -208px 0;
     }
 
     50.01% {
-        background-position: -300px 0;
+        background-position: -312px 0;
     }
     63.9% {
-        background-position: -300px 0;
+        background-position: -312px 0;
     }
 
     66.68% {
-        background-position: -400px 0;
+        background-position: -416px 0;
     }
     80.57% {
-        background-position: -400px 0;
+        background-position: -416px 0;
     }
 
     83.35% {
-        background-position: -500px 0;
+        background-position: -520px 0;
     }
     97.24% {
-        background-position: -500px 0;
+        background-position: -520px 0;
     }
 
     100% {
