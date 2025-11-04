@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ROUTES } from '~/config/routes';
 
-
 interface Props {
     movie: IMovieShort;
 }
@@ -10,8 +9,15 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-    <article @click="$router.push(ROUTES.moviesId(props.movie.id))" class="movie__card">
-        <NuxtImg class="movie__card-img" :src="props.movie.img" />
+    <article
+        @click="$router.push(ROUTES.moviesId(props.movie.id))"
+        class="movie__card"
+    >
+        <UiMovieImage
+            :src="props.movie.img"
+            :title="props.movie.title"
+            class="movie__card-img"
+        />
         <div class="movie__card-desc">
             <p class="movie__card-title">{{ props.movie.title }}</p>
             <p class="movie__card-year">{{ props.movie.year }}</p>
@@ -30,7 +36,8 @@ const props = defineProps<Props>();
     box-shadow: var(--card-shadow-hover);
 }
 
-.movie__card-img {
+:global(.movie__card-img) {
+    height: 250px;
     max-height: 250px;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -55,7 +62,7 @@ const props = defineProps<Props>();
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+
     line-height: 1.4;
     max-height: 2.8em; /* 2 строки * line-height */
     word-break: break-word;

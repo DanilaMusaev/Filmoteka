@@ -9,7 +9,7 @@
 <template>
     <div v-if="props.movie === undefined">The Movie is not Found</div>
     <div v-else class="singleMovie">
-        <NuxtImg class="singleMovie__img" :src="props.movie.img" />
+        <UiMovieImage :src="props.movie.img" class="singleMovie__img" :title="props.movie.title" />
         <div class="singleMovie__desc">
             <div class="singleMovie__title-info">
                 <h3 class="singleMovie__title">{{ props.movie.title }}</h3>
@@ -56,7 +56,8 @@
     color: var(--text-primary);
 }
 
-.singleMovie__img {
+:global(.singleMovie__img) {
+    height: 450px;
     max-height: 450px;
     
     border-radius: 20px;
