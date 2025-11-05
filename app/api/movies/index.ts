@@ -11,6 +11,7 @@ export class MovieService {
         title?: string | string[] | undefined;
         genre?: string;
         year?: string;
+        page?: number;
     }) {
         try {
             if (
@@ -26,6 +27,7 @@ export class MovieService {
                 title: options?.title,
                 genre: options?.genre,
                 year: options?.year,
+                page: options?.page,
             });
 
             return result;

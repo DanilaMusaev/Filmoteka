@@ -18,6 +18,11 @@ export default defineNuxtConfig({
     },
     compatibilityDate: '2025-07-15',
     devtools: { enabled: false },
-    css: ['~/assets/css/global.css'],
+    css: [
+        '~/assets/css/global.css',
+        'swiper/css',
+        'swiper/css/navigation',
+        'swiper/css/pagination',
+    ],
     modules: ['@nuxt/image'],
 });

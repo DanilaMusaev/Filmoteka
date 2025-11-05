@@ -25,18 +25,18 @@ const props = defineProps<Props>();
     </article>
 </template>
 
-<style scoped>
+<style>
 .movie__card {
     max-width: 200px;
 
     cursor: pointer;
 }
 
-.movie__card:hover .movie__card-img {
+.movie__card:hover > img {
     box-shadow: var(--card-shadow-hover);
 }
 
-:global(.movie__card-img) {
+.movie__card-img {
     height: 250px;
     max-height: 250px;
     border-radius: 20px;

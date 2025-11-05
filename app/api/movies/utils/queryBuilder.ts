@@ -42,6 +42,7 @@ export const omdbTransformer = createApiMapper(
         title: 's',
         genre: 's',
         year: 'y',
+        page: 'page',
         type: 'type',
     },
     {

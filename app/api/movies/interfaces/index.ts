@@ -17,6 +17,7 @@ export interface ApiClientQuery {
     title?: string | string[];
     genre?: string;
     year?: string;
+    page?: number;
     // Mb more options
 }
 
